@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+body {
+  background-color: #f0f2fe; /* bg-indigo-50 color */
+  color: #1e293b; /* text-slate-800 */
+  font-family: var(--font-sans);
+}
+
+/* Custom scrollbar for scrollable lists */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(224, 231, 255, 0.5); /* indigo-100-ish */
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.25); /* indigo-500-ish */
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.4);
+}
+
+/* @media print formatting rules for high quality bespoke executive PDF exports */
+@media print {
+  body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    font-size: 12pt;
+  }
+  
+  /* Hide non-report interactive details */
+  #app-header, 
+  #pro-tips-card, 
+  #history-column, 
+  #decision-consultant-card,
+  #add-pro-form,
+  #add-con-form,
+  #add-swot-factor,
+  #swot-controls,
+  .flex.items-center.justify-between.bg-white.border.border-indigo-100.rounded-3xl.p-3 {
+    display: none !important;
+  }
+
+  /* Make sure main content covers full width */
+  #main-content {
+    grid-template-columns: 1fr !important;
+    display: block !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  #input-column, .lg\:col-span-8 {
+    grid-column: span 12 / span 12 !important;
+    width: 100% !important;
+  }
+
+  /* Clean cards for paper representation */
+  .bg-white, .bg-indigo-600 {
+    box-shadow: none !important;
+    border: 1px solid #e2e8f0 !important;
+    page-break-inside: avoid;
+  }
+
+  /* Avoid cutting off text mid-page */
+  div, p, h2, h3, h4 {
+    page-break-inside: avoid;
+  }
+}
